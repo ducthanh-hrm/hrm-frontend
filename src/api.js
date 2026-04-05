@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://railway.com/project/287ab9de-1c29-42c6-a6b4-ce59c5a90a8a"
+  baseURL: "https://hrm-backend-zeta.vercel.app"
 });
 
 API.interceptors.request.use((config) => {
