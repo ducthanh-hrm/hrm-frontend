@@ -1,26 +1,28 @@
 import axios from "axios";
 
+// Tạo instance Axios
 const API = axios.create({
-  baseURL: "baseURL: "https://hrm-backend-final.onrender.com"
+  baseURL: "https://hrm-backend-final.onrender.com"
 });
 
+// Interceptor trước khi gửi request: gắn token nếu có
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-
   if (token) {
-    config.headers.Authorization = token; // giữ nguyên
+    config.headers.Authorization = `Bearer ${token}`; // auto thêm Bearer
   }
-
   return config;
+}, (error) => {
+  return Promise.reject(error);
 });
 
-// 🔥 thêm cái này là đủ xịn rồi
+// Interceptor xử lý response
 API.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err.response && err.response.status === 401) {
       localStorage.removeItem("token");
-      window.location.reload(); // quay về login
+      window.location.reload(); // quay về login nếu hết hạn token
     }
     return Promise.reject(err);
   }
