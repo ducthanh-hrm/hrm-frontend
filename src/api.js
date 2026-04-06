@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://hrm-backend-zeta.vercel.app"
+  baseURL: "baseURL: "https://hrm-backend-final.onrender.com"
 });
 
 API.interceptors.request.use((config) => {
