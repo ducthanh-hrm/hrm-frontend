@@ -27,7 +27,7 @@ function Login({ setIsAuth }) {
       }
 
       // 🔥 LƯU TOKEN + ROLE
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", data.token);
       localStorage.setItem("role", role);
 
       message.success(`Đăng nhập thành công (${role})`);
