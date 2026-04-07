@@ -19,16 +19,15 @@ function Login({ setIsAuth }) {
 
       const res = await API.post("/login", { email, password });
 
-      const { token, role } = res.data;
+const { token, role } = res.data;
 
-      if (!token) {
-        message.error("Không nhận được token!");
-        return;
-      }
+if (!token) {
+  message.error("Không nhận được token!");
+  return;
+}
 
-      // 🔥 LƯU TOKEN + ROLE
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("role", role);
+localStorage.setItem("token", token);
+localStorage.setItem("role", role);
 
       message.success(`Đăng nhập thành công (${role})`);
 
