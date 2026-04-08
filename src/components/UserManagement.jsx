@@ -172,6 +172,7 @@ function UserManagement({ users, loading, deleteUser, saveUser, isAdmin, setSele
           loading={loading}
           pagination={{ pageSize: 8, position: ["bottomCenter"] }}
           style={{ overflowX: "auto" }}
+          scroll={{ x: 800 }}
           className="no-print"
         />
       </Card>

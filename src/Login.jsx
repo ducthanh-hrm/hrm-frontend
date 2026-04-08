@@ -143,8 +143,9 @@ const styles = {
     zIndex: 0
   },
   card: {
-    width: 420,
-    padding: "40px",
+    width: "90%",
+    maxWidth: 420,
+    padding: "30px",
     position: "relative",
     zIndex: 1,
     background: "rgba(255, 255, 255, 0.7)", 

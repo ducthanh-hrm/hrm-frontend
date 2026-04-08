@@ -104,6 +104,7 @@ function Attendance({ users }) {
           dataSource={data}
           loading={loading}
           rowKey="id"
+          scroll={{ x: 800 }}
           pagination={{ pageSize: 12, position: ["bottomCenter"] }}
         />
       </Card>

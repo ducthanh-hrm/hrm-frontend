@@ -10,7 +10,13 @@ const { Sider } = Layout;
 
 function Sidebar({ page, setPage, logout }) {
   return (
-    <Sider width={240} theme="dark" style={{ boxShadow: "var(--shadow-lg)", zIndex: 10 }}>
+    <Sider 
+      width={240} 
+      theme="dark" 
+      breakpoint="lg"
+      collapsedWidth="0"
+      style={{ boxShadow: "var(--shadow-lg)", zIndex: 10, minHeight: "100vh" }}
+    >
       <div
         style={{
           color: "#fff",
