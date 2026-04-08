@@ -1,48 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary-color: #1890ff;
+  --secondary-color: #722ed1;
+  --bg-color: #f0f2f5;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --border-radius-lg: 16px;
+  --border-radius-md: 8px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(24, 144, 255, 0.3);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: #f4f6f9;
-}
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
 * {
   margin: 0;
   padding: 0;
@@ -52,27 +24,127 @@ button {
 html, body, #root {
   width: 100%;
   height: 100%;
-}
-body {
-  background: #f0f2f5;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--border-radius-lg);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Ant Design Overrides to match theme */
+.ant-card {
+  border-radius: var(--border-radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: none !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ant-card:hover {
+  box-shadow: var(--shadow-md) !important;
+}
+.ant-btn {
+  border-radius: var(--border-radius-md) !important;
+}
+.ant-input, .ant-input-password, .ant-picker, .ant-select-selector {
+  border-radius: var(--border-radius-md) !important;
+}
+.ant-table-wrapper {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Dark Mode Variables --- */
+body.dark-mode {
+  --bg-color: #1a1b1e;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --card-bg: rgba(30, 31, 34, 0.85);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.8);
+}
+
+/* Fix Ant Design table in dark mode */
+body.dark-mode .ant-table {
+  background: transparent !important;
+  color: var(--text-primary);
+}
+body.dark-mode .ant-table-thead > tr > th {
+  background: rgba(255,255,255,0.05) !important;
+  color: var(--text-primary) !important;
+  border-bottomColor: rgba(255,255,255,0.1);
+}
+body.dark-mode .ant-table-tbody > tr > td {
+  border-bottomColor: rgba(255,255,255,0.05);
+}
+body.dark-mode .ant-table-tbody > tr:hover > td {
+  background: rgba(255,255,255,0.02) !important;
+}
+body.dark-mode .ant-card-head {
+  color: var(--text-primary);
+  border-bottomColor: rgba(255,255,255,0.1);
+}
+
+/* --- Print Styles For ID Card --- */
+@media print {
+  body {
+    background: white;
   }
-  a:hover {
-    color: #747bff;
+  .no-print {
+    display: none !important;
   }
-  button {
-    background-color: #f9f9f9;
+  aside, header {
+    display: none !important;
+  }
+  .print-container {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .id-card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    transform: scale(1.1); /* Slightly larger for A4 */
   }
 }

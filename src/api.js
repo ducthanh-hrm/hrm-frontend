@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Tạo instance Axios
 const API = axios.create({
-  baseURL: "https://hrm-backend-final.onrender.com"
+  baseURL: import.meta.env.VITE_API_URL || "https://hrm-backend-final.onrender.com"
 });
 
 // Interceptor trước khi gửi request: gắn token nếu có
